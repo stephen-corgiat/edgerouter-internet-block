@@ -1,0 +1,13 @@
+[Unit]
+Description=Internet Block Service
+After=network-online.target vyatta-router.service
+Wants=network-online.target
+
+[Service]
+ExecStart=/config/internet-block/internet-block -config /config/internet-block/config.json
+Restart=on-failure
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
